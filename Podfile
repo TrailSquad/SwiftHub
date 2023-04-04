@@ -79,6 +79,11 @@ target 'SwiftHub' do
 
     # Ads
     pod 'Google-Mobile-Ads-SDK', '~> 9.0'
+
+    # WiredAPM
+    pod 'DoraemonKit/Core', :git => "https://github.com/Wiredcraft/DoKit", :branch => "dev"
+    pod 'FBRetainCycleDetector', :git => "https://github.com/TrailSquad/FBRetainCycleDetector"
+    pod 'DoraemonKit/WithMLeaksFinder', :git => "https://github.com/Wiredcraft/DoKit", :branch => "dev"
     
     target 'SwiftHubTests' do
         inherit! :search_paths
