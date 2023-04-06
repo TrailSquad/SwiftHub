@@ -10,6 +10,7 @@ import UIKit
 import RAMAnimatedTabBarController
 import Localize_Swift
 import RxSwift
+import RxRelay
 
 enum HomeTabBarItem: Int {
     case search, news, notifications, settings, login
@@ -84,6 +85,8 @@ class HomeTabBarController: RAMAnimatedTabBarController, Navigatable {
     var viewModel: HomeTabBarViewModel?
     var navigator: Navigator!
 
+    let viewDidLoadObserver = PublishRelay<Void>()
+
     init(viewModel: ViewModel?, navigator: Navigator) {
         self.viewModel = viewModel as? HomeTabBarViewModel
         self.navigator = navigator
@@ -100,6 +103,12 @@ class HomeTabBarController: RAMAnimatedTabBarController, Navigatable {
         // Do any additional setup after loading the view.
         makeUI()
         bindViewModel()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        viewDidLoadObserver.accept(())
     }
 
     func makeUI() {
@@ -127,7 +136,8 @@ class HomeTabBarController: RAMAnimatedTabBarController, Navigatable {
     func bindViewModel() {
         guard let viewModel = viewModel else { return }
 
-        let input = HomeTabBarViewModel.Input(whatsNewTrigger: rx.viewDidAppear.mapToVoid())
+//        let input = HomeTabBarViewModel.Input(whatsNewTrigger: rx.viewDidAppear.mapToVoid())
+        let input = HomeTabBarViewModel.Input(whatsNewTrigger: viewDidLoadObserver.skip(1).asObservable())
         let output = viewModel.transform(input: input)
 
         output.tabBarItems.delay(.milliseconds(50)).drive(onNext: { [weak self] (tabBarItems) in

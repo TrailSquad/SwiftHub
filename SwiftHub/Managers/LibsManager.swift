@@ -14,7 +14,7 @@ import IQKeyboardManagerSwift
 import CocoaLumberjack
 import Kingfisher
 #if DEBUG
-import FLEX
+//import FLEX
 #endif
 import FirebaseCrashlytics
 import NSObject_Rx
@@ -125,7 +125,7 @@ class LibsManager: NSObject {
 
     func setupFLEX() {
         #if DEBUG
-        FLEXManager.shared.isNetworkDebuggingEnabled = true
+//        FLEXManager.shared.isNetworkDebuggingEnabled = true
         #endif
     }
 
@@ -144,7 +144,7 @@ extension LibsManager {
 
     func showFlex() {
         #if DEBUG
-        FLEXManager.shared.showExplorer()
+//        FLEXManager.shared.showExplorer()
         analytics.log(.flexOpened)
         #endif
     }

@@ -63,7 +63,7 @@ target 'SwiftHub' do
     pod 'SnapKit', '~> 5.0'  # https://github.com/SnapKit/SnapKit
 
     # Code Quality
-    pod 'FLEX', '~> 5.0', :configurations => ['Debug']  # https://github.com/Flipboard/FLEX
+#    pod 'FLEX', '~> 5.0', :configurations => ['Debug']  # https://github.com/Flipboard/FLEX
     pod 'SwifterSwift', '~> 5.0'  # https://github.com/SwifterSwift/SwifterSwift
     pod 'BonMot', '~> 6.0'  # https://github.com/Rightpoint/BonMot
 
@@ -84,7 +84,7 @@ target 'SwiftHub' do
     pod 'DoraemonKit/Core', :git => "https://github.com/Wiredcraft/DoKit", :branch => "dev"
     pod 'FBRetainCycleDetector', :git => "https://github.com/TrailSquad/FBRetainCycleDetector"
     pod 'DoraemonKit/WithMLeaksFinder', :git => "https://github.com/Wiredcraft/DoKit", :branch => "dev"
-    
+
     target 'SwiftHubTests' do
         inherit! :search_paths
         # Pods for testing
